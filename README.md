@@ -10,6 +10,8 @@ Simple nitro generator coded in python and can create 1000 nitro links in 2sec.
 $ git clone https://github.com/thelinuxuser-choice/Nitrogen
 # change the working directory to Nitrogen
 $ cd Nitrogen
+#install requirements
+$pip3 install -r requirements.txt
 
 ```
 ## Usage
