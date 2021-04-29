@@ -40,7 +40,7 @@ for x in line_1:
     sleep(0.1)
 
 
-num=input('How many nitro codes you want me to generate:')
+num=input('[?]How many nitro codes you want me to generate:')
 
 f=open("Generatednitro.txt","a+", encoding='utf-8')
 
@@ -54,7 +54,7 @@ for n in range(int(num)):
 
 f.close()
 
-
+print(f"[>] Generated {num} nitro codes and saved \n[^]now going to check {num} nitro codes are valid are not! ")
 
 with open("Generatednitro.txt") as f:
     for line in f:
@@ -65,10 +65,10 @@ with open("Generatednitro.txt") as f:
         r = requests.get(url)
 
         if r.status_code == 200:
-            print(" VALID CODE ┇ {} ".format(line.strip("\n")))
+            print(" [+]VALID CODE ┇ {} ".format(line.strip("\n")))
             break
         else:
-        	print(" INVALID CODE ┇ {} ".format(line.strip("\n")))
+        	print(" [-]INVALID CODE ┇ {} ".format(line.strip("\n")))
 
 
 os.remove("Generatednitro.txt")
