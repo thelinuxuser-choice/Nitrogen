@@ -1,40 +1,77 @@
-import random
+import random, string
+import requests
+import os
 
-#nitro generator coded by thelinux-userchoice v1.0
+
 FAIL = '\033[91m' #just shut up
 WARNING = '\033[93m' #nothing
 
-print("nitro generator coded by thelinux-userchoice v1.0\n")
-
-print(FAIL +"  ▒███████▒▓█████  ███▄    █ ")
-print(FAIL +"  ▒ ▒ ▒ ▄▀░▓█   ▀  ██ ▀█   █ ")
-print(FAIL +"  ░ ▒ ▄▀▒░ ▒███   ▓██  ▀█ ██▒")
-print(WARNING+"  ▄▀▒   ░▒▓█  ▄ ▓██▒  ▐▌██▒")
-print(WARNING+"▒███████▒░▒████▒▒██░   ▓██░")
-print(WARNING+"░▒▒ ▓░▒░▒░░ ▒░ ░░ ▒░   ▒ ▒ ")
-print(FAIL +"  ░░▒ ▒ ░ ▒ ░ ░  ░░ ░░   ░ ▒░")
-print(FAIL +"  ░ ░ ░ ░ ░   ░      ░   ░ ░ ")
-print(FAIL +"  ░ ░       ░  ░         ░ ")
-print(WARNING+" ░                         \n") 
+#Idea and help by stackoverflow
 
 
-
-def gen():
-    chars = ['a', 'b', 'c', 'd',  'e','f', 'g', 'h','i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-    '1','2','3','4','5','6','7','8','9','0'
-    ]
-    return "".join(random.choices(chars, k=16))
-
-link = "https://discord.gift/"
-
-
-
-nitro = link + gen()
+print(FAIL +" ███▄    █  ██▓▄▄▄█████▓ ██▀███   ▒█████  ")
+print(FAIL +" ██ ▀█   █ ▓██▒▓  ██▒ ▓▒▓██ ▒ ██▒▒██▒  ██▒")
+print(FAIL +"▓██  ▀█ ██▒▒██▒▒ ▓██░ ▒░▓██ ░▄█ ▒▒██░  ██▒")
+print(FAIL +"▓██▒  ▐▌██▒░██░░ ▓██▓ ░ ▒██▀▀█▄  ▒██   ██░")
+print(FAIL +"▒██░   ▓██░░██░  ▒██▒ ░ ░██▓ ▒██▒░ ████▓▒░")
+print(FAIL +"░ ▒░   ▒ ▒ ░▓    ▒ ░░   ░ ▒▓ ░▒▓░░ ▒░▒░▒░ ")
+print(FAIL +"░ ░░   ░ ▒░ ▒ ░    ░      ░▒ ░ ▒░  ░ ▒ ▒░ ")
+print(FAIL +"   ░   ░ ░  ▒ ░  ░        ░░   ░ ░ ░ ░ ▒  ")
+print(WARNING +"        ░  ░              ░         ░ ░  \n")
+                                          
 
 
-n = int(input("How many nitro codes you want me to generate:"))
-f = open("GeneratedNitro.txt","a+")
-for x in range(n):
-  f.write(f"{nitro}\n")
+print(WARNING +"  ▄████ ▓█████  ███▄    █ ")
+print(WARNING +" ██▒ ▀█▒▓█   ▀  ██ ▀█   █ ")
+print(WARNING +"▒██░▄▄▄░▒███   ▓██  ▀█ ██▒")
+print(WARNING +"░▓█  ██▓▒▓█  ▄ ▓██▒  ▐▌██▒")
+print(WARNING +"░▒▓███▀▒░▒████▒▒██░   ▓██░")
+print(WARNING +" ░▒   ▒ ░░ ▒░ ░░ ▒░   ▒ ▒ ")
+print(WARNING +"  ░   ░  ░ ░  ░░ ░░   ░ ▒░")
+print(WARNING +"░ ░   ░    ░      ░   ░ ░ ")
+print(WARNING +"      ░    ░  ░         ░ \n")
+                          
+from time import sleep
+import sys
+line_1 = "Discord nitrogen by thelinux-userchoice\n"
+for x in line_1:
+    print(x, end='')
+    sys.stdout.flush()
+    sleep(0.1)
+
+
+num=input('How many nitro codes you want me to generate:')
+
+f=open("Generatednitro.txt","a+", encoding='utf-8')
+
+print("")
+      
+for n in range(int(num)):
+   y = ''.join(random.choice(string.ascii_uppercase + string.digits + string.ascii_lowercase) for _ in range(16))
+   f.write('https://discord.gift/')
+   f.write(y)
+   f.write("\n")
+
 f.close()
-print("Finished!")
+
+
+
+with open("Generatednitro.txt") as f:
+    for line in f:
+        nitro = line.strip("\n")
+
+        url = "https://discordapp.com/api/v6/entitlements/gift-codes/" + nitro + "?with_application=false&with_subscription_plan=true"
+
+        r = requests.get(url)
+
+        if r.status_code == 200:
+            print(" VALID CODE ┇ {} ".format(line.strip("\n")))
+            break
+        else:
+        	print(" INVALID CODE ┇ {} ".format(line.strip("\n")))
+
+
+os.remove("Generatednitro.txt")
+
+
+print("\nbye bye :) please give me a star \nhttps://github.com/thelinuxuser-choice/Nitrogen/")
