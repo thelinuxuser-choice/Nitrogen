@@ -1,5 +1,5 @@
 # Nitrogen
-Simple nitro generator coded in python and can create 1000 nitro links in 2sec
+Simple nitro generator coded in python and can create 1000 nitro links in 2sec.
 
 ![trial](srcs/gif.gif)
 
